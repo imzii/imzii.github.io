@@ -1,0 +1,128 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&display=swap");
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css");
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/variable/pretendardvariable.css");
+@font-face {
+  font-family: "IAMAPLAYER";
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/IAMAPLAYER.woff2) format("woff2");
+}
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard Variable", Pretendard, Roboto, "Noto Sans KR", "Segoe UI", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}
+ul li {
+  margin: 0;
+  list-style-type: none;
+  float: left;
+}
+
+code {
+  font-family: JetBrains Mono, source-code-pro, Menlo, Monaco, Consolas, Courier New, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard Variable", Pretendard, Roboto, "Noto Sans KR", "Segoe UI", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", monospace;
+}
+
+.profile {
+  width: 10%;
+  height: auto;
+}
+
+#logo {
+  font-family: "IAMAPLAYER", sans-serif;
+  font-size: 1.7rem;
+  margin: 0;
+  min-width: 150px;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  width: 100%;
+  height: 80px;
+  padding: 0 10%;
+  position: sticky;
+}
+.wrapper * {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.wrapper nav {
+  font-size: 1.1rem;
+}
+.wrapper ul li {
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+  float: left;
+  width: 150px;
+  margin: 0 5%;
+  text-align: center;
+}
+.wrapper ul li a {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  height: fit-content;
+}
+.wrapper ul li::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: black;
+  transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+}
+.wrapper ul li:hover::after {
+  width: 100%;
+  left: 0;
+  transform-origin: right;
+}
+
+main {
+  margin: 8% 12%;
+}
+main h1 {
+  font-size: 4vw;
+}
+main ul {
+  width: 50%;
+}
+main ul li {
+  margin-right: 10%;
+  font-weight: 500;
+  font-size: 1.8vw;
+  color: lightgrey;
+  cursor: pointer;
+}
+main ul li.selected {
+  color: black;
+  font-weight: 700;
+}
+main ul li:hover:not(.selected) {
+  color: darkgrey;
+}
+
+/*# sourceMappingURL=style.css.map */

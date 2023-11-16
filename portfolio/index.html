@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/style.css">
+  <title>Developer Lim</title>
+</head>
+
+<body>
+  <header data-include-file="/components/header.html" class="include"></header>
+  <main>
+    <h1>Portfolio List</h1>
+    <ul id="portfolioList"></ul>
+  </main>
+  <script>
+    fetch('portfolio.json') // JSON 파일 경로
+      .then(response => response.json())
+      .then(data => {
+        const portfolioList = document.getElementById('portfolioList');
+
+        data.forEach(item => {
+          const listItem = document.createElement('li');
+          listItem.innerHTML = `
+          ${item.title}<br />
+          ${item.created_at}<br />
+          ${item.labels.join(', ')}<br />
+        `;
+          portfolioList.appendChild(listItem);
+        });
+      })
+      .catch(error => console.error('Error fetching data:', error));
+  </script>
+
+  <script src="/include.js"></script>
+</body>
+
+</html>

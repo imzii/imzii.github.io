@@ -17,34 +17,13 @@
   <div id="root">
     <header data-include-file="/components/header.html" class="include"></header>
     <main>
-      <h1>포트폴리오</h1>
-      <ul>
-        <li class="category">Web</li>
-        <li class="category">Windows</li>
-        <li class="category">Android</li>
-      </ul>
-
-      <script>
-        const items = document.querySelectorAll('.category');
-      
-        items.forEach(item => {
-          item.addEventListener('click', function() {
-            items.forEach(i => i.classList.remove('selected'));
-            this.classList.add('selected');
-          });
-        });
-      </script>
-
-
-<pre><code>// C언어 코드를 작성합니다.
-
-int main() {
-  printf("Hello, World!");
-  return 0;
-}</code></pre>
-    </main>
-  </div>
-  
+      <h1>소개</h1>
+      <div>
+      <img src="/images/임지훈반명함.jpg" class="profile"/>
+      <h2>임지훈 Jihoon Lim</h2>
+      <h3>2003.10.01</h3>
+    </div>
+    <i class="fa-solid fa-graduation-cap"></i>
   <script src="/include.js"></script>
 </body>
 
