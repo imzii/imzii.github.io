@@ -1,0 +1,33 @@
+name: Generate HTML from GitHub Issues
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  generate-html:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14
+
+      - name: Install dependencies
+        run: npm install marked
+
+      - name: Install other dependencies
+        run: npm install
+
+      - name: Generate HTML from Markdown
+        run: node generate-html.js
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.email "limjilab@gmail.com"
+          git config --global user.name "imzii"
+          git add .
+          git commit -m "Generate HTML from GitHub Issues"
+          git push
