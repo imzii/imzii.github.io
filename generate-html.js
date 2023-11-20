@@ -6,14 +6,17 @@ const issues = require(process.env.GITHUB_EVENT_PATH);
 
 const issueTitle = issues.issue.title;
 const issueCreatedAt = issues.issue.created_at.substring(0, 10).replace(/-/g, '.');
-const labels = issues.issue.labels.map(label => label.name);
+const labelsWithColors = issues.issue.labels.map(label => ({
+  name: label.name,
+  color: label.color
+}));
 
 const milestoneTitle = issues.issue.milestone?.title; // Check if a milestone is assigned
 
 const postData = {
   title: issueTitle,
   created_at: issueCreatedAt,
-  labels: labels
+  labels: labelsWithColors // 라벨 색상을 포함하여 업데이트합니다.
 };
 
 const directoryPath = 'generated-html';
