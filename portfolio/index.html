@@ -10,22 +10,30 @@
 <body>
   <header data-include-file="/components/header.html" class="include"></header>
   <main>
-    <h1>Portfolio List</h1>
-    <ul id="portfolioList"></ul>
+    <h1>포트폴리오</h1>
+    <ul id="portfolio-list"></ul>
   </main>
   <script>
     fetch('portfolio.json') // JSON 파일 경로
       .then(response => response.json())
       .then(data => {
-        const portfolioList = document.getElementById('portfolioList');
+        const portfolioList = document.getElementById('portfolio-list');
 
         data.forEach(item => {
           const listItem = document.createElement('li');
+          let labelsHTML = '';
+
+          item.labels.forEach(label => {
+            // GitHub에서 제공된 label.color가 유효한 색상 값(#RRGGBB 등)을 가진다고 가정합니다.
+            labelsHTML += `<span style="color: #${label.color}">${label.name}</span>, `;
+          });
+
           listItem.innerHTML = `
-          ${item.title}<br />
-          ${item.created_at}<br />
-          ${item.labels.join(', ')}<br />
-        `;
+            ${item.title}<br />
+            ${item.created_at}<br />
+            ${labelsHTML}<br />
+          `;
+
           portfolioList.appendChild(listItem);
         });
       })
