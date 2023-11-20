@@ -21,23 +21,42 @@
 
         data.forEach(item => {
           const listItem = document.createElement('li');
-          let labelsHTML = '';
+
+          const title = document.createElement('div');
+          title.textContent = item.title;
+
+          const createdAt = document.createElement('div');
+          createdAt.textContent = item.created_at;
+
+          const labelsContainer = document.createElement('div');
+          labelsContainer.classList.add('labels-container');
 
           item.labels.forEach(label => {
-            // GitHub에서 제공된 label.color가 유효한 색상 값(#RRGGBB 등)을 가진다고 가정합니다.
-            labelsHTML += `<span style="color: #${label.color}">${label.name}</span>, `;
+            const labelDiv = document.createElement('div');
+            labelDiv.textContent = label.name;
+            labelDiv.style.backgroundColor = `#${label.color}`;
+            labelDiv.style.color = getTextColor(label.color);
+            labelsContainer.appendChild(labelDiv);
           });
 
-          listItem.innerHTML = `
-            ${item.title}<br />
-            ${item.created_at}<br />
-            ${labelsHTML}<br />
-          `;
+          listItem.appendChild(title);
+          listItem.appendChild(createdAt);
+          listItem.appendChild(labelsContainer);
 
           portfolioList.appendChild(listItem);
         });
       })
       .catch(error => console.error('Error fetching data:', error));
+
+    function getTextColor(color) {
+      color = color.slice(1);
+      const r = parseInt(color.substring(0, 2), 16);
+      const g = parseInt(color.substring(2, 4), 16);
+      const b = parseInt(color.substring(4, 6), 16);
+      const brightness = (0.2126 * r + 0.7152 * g + 0.0722 * b);
+
+      return brightness < 128 ? '#ffffff' : '#000000';
+    }
   </script>
 
   <script src="/include.js"></script>
