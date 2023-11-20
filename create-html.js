@@ -21,7 +21,7 @@ const postData = {
   labels: labelsWithColors // 라벨 색상을 포함하여 업데이트합니다.
 };
 
-const directoryPath = 'generated-html';
+const directoryPath = 'portfolio';
 const htmlContent = `
 <!DOCTYPE html>
 <html lang="en">
@@ -37,7 +37,7 @@ const htmlContent = `
 </html>
 `;
 
-const filePath = path.join(directoryPath, `${issues.issue.number}.html`);
+const filePath = path.join(directoryPath, `${issueNumber}.html`);
 
 async function writeToFiles() {
   try {
