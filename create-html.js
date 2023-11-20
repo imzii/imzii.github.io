@@ -1,4 +1,4 @@
-const fs = require('fs');
+const fs = require('fs').promises;
 const path = require('path');
 const { marked } = require('marked');
 
@@ -20,10 +20,6 @@ const postData = {
 };
 
 const directoryPath = 'generated-html';
-if (!fs.existsSync(directoryPath)) {
-  fs.mkdirSync(directoryPath);
-}
-
 const htmlContent = `
 <!DOCTYPE html>
 <html lang="en">
@@ -41,23 +37,29 @@ const htmlContent = `
 
 const filePath = path.join(directoryPath, `${issues.issue.number}.html`);
 
-fs.writeFileSync(filePath, htmlContent);
+async function writeToFiles() {
+  try {
+    if (!(await fs.access(directoryPath).catch(() => false))) {
+      await fs.mkdir(directoryPath);
+    }
 
-// JSON 파일에 저장할 정보 구성
-const jsonFilePath = milestoneTitle === 'blog' ? 'blog/blog.json' : 'portfolio/portfolio.json'; // 마일스톤에 따라 JSON 파일 선택
+    await fs.writeFile(filePath, htmlContent);
 
-let postDataList = [];
+    const jsonFilePath = milestoneTitle === 'blog' ? 'blog/blog.json' : 'portfolio/portfolio.json';
+    let postDataList = [];
 
-if (fs.existsSync(jsonFilePath)) {
-  // 파일이 이미 존재하는 경우 기존 데이터 가져오기
-  const existingData = fs.readFileSync(jsonFilePath, 'utf-8');
-  if (existingData.trim() !== '') {
-    // 파일이 비어 있지 않은 경우
-    postDataList = JSON.parse(existingData);
+    if (await fs.access(jsonFilePath).catch(() => false)) {
+      const existingData = await fs.readFile(jsonFilePath, 'utf-8');
+      if (existingData.trim() !== '') {
+        postDataList = JSON.parse(existingData);
+      }
+    }
+
+    postDataList.push(postData);
+    await fs.writeFile(jsonFilePath, JSON.stringify(postDataList, null, 2));
+  } catch (error) {
+    console.error('Error occurred:', error);
   }
 }
 
-postDataList.push(postData);
-
-// 데이터를 JSON 형식으로 저장
-fs.writeFileSync(jsonFilePath, JSON.stringify(postDataList, null, 2));
+writeToFiles();
