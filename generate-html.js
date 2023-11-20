@@ -41,10 +41,12 @@ const filePath = path.join(directoryPath, `${issueNumber}.html`);
 
 async function writeToFiles() {
   try {
-    if (!(await fs.access(directoryPath).catch(() => false))) {
+    const directoryPath = 'portfolio';
+    const directoryExists = await fs.access(directoryPath).then(() => true).catch(() => false);
+
+    if (!directoryExists) {
       await fs.mkdir(directoryPath);
     }
-
     await fs.writeFile(filePath, htmlContent);
 
     const jsonFilePath = milestoneTitle === 'blog' ? 'blog/blog.json' : 'portfolio/portfolio.json';
