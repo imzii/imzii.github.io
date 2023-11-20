@@ -1,5 +1,7 @@
 const fs = require('fs');
 
+const issues = require(process.env.GITHUB_EVENT_PATH);
+
 function removeElementsByKeyValue(arr, key, value) {
   return arr.filter(item => item[key] !== value);
 }
