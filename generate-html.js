@@ -51,7 +51,8 @@ let postDataList = [];
 if (fs.existsSync(jsonFilePath)) {
   // 파일이 이미 존재하는 경우 기존 데이터 가져오기
   const existingData = fs.readFileSync(jsonFilePath, 'utf-8');
-  if (existingData) {
+  if (existingData.trim() !== '') {
+    // 파일이 비어 있지 않은 경우
     postDataList = JSON.parse(existingData);
   }
 }
