@@ -1,7 +1,7 @@
 name: Generate HTML from GitHub Issues
 on:
   issues:
-    types: [opened]
+    types: [opened, edited]
 
 jobs:
   generate-html:
