@@ -18,7 +18,7 @@ jobs:
 
       - name: Execute create-post script
         run: |
-          node create-post.js
+          node js/create-post.js
 
       - name: Commit and push changes
         run: |
