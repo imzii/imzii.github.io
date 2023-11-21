@@ -1,12 +1,20 @@
 [
   {
-    "number": 14,
-    "title": "Python Post 1",
+    "number": 15,
+    "title": "NEW POST 12345",
     "created_at": "2023.11.21",
     "labels": [
       {
-        "name": "Python",
-        "color": "306998"
+        "name": "bug",
+        "color": "d73a4a"
+      },
+      {
+        "name": "documentation",
+        "color": "0075ca"
+      },
+      {
+        "name": "duplicate",
+        "color": "cfd3d7"
       }
     ]
   }
