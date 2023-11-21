@@ -1,16 +1,12 @@
 [
   {
-    "number": 16,
-    "title": "Hello World!",
+    "number": 17,
+    "title": "ㅁㅁㄴㅇㄻㄴㄹ",
     "created_at": "2023.11.21",
     "labels": [
       {
         "name": "bug",
         "color": "d73a4a"
-      },
-      {
-        "name": "documentation",
-        "color": "0075ca"
       },
       {
         "name": "duplicate",
