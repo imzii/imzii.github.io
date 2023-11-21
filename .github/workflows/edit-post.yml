@@ -1,4 +1,4 @@
-name: Create HTML and Edit JSON from GitHub Issues
+name: Edit HTML and JSON from GitHub Issues
 on:
   issues:
     types: [edited]
