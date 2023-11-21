@@ -1,24 +1,20 @@
 [
   {
-    "number": 13,
-    "title": "ㅁㅇㄻㄹasdfasdfasdf ",
+    "number": 1,
+    "title": "꽤 긴 텍스트로 이루어진 제목",
     "created_at": "2023.11.20",
     "labels": [
       {
-        "name": "enhancement",
-        "color": "a2eeef"
+        "name": "test",
+        "color": "9465B1"
       },
       {
-        "name": "help wanted",
-        "color": "008672"
+        "name": "TypeScript",
+        "color": "1D76DB"
       },
       {
-        "name": "good first issue",
-        "color": "7057ff"
-      },
-      {
-        "name": "question",
-        "color": "d876e3"
+        "name": "JavaScript",
+        "color": "FBCA04"
       }
     ]
   }

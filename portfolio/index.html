@@ -8,42 +8,50 @@
 </head>
 
 <body>
-  <header data-include-file="/components/header.html" class="include"></header>
+  <header>
+    <h1 id="logo"><a href="/">Jihoon Lim</a></h1>
+    <nav>
+      <ul>
+        <li><a class="" href="/introduction">소개</a></li>
+        <li><a class="" href="/portfolio">포트폴리오</a></li>
+        <li><a class="" href="/blog">블로그</a></li>
+      </ul>
+    </nav>
+  </header>
   <main>
     <h1>포트폴리오</h1>
-    <ul id="portfolio-list"></ul>
+    <div id="portfolio-container"></div>
   </main>
   <script>
-    fetch('portfolio.json') // JSON 파일 경로
+    fetch('portfolio.json')
       .then(response => response.json())
       .then(data => {
-        const portfolioList = document.getElementById('portfolio-list');
+        const portfolioContainer = document.getElementById('portfolio-container');
 
         data.forEach(item => {
-          const listItem = document.createElement('li');
+          const portfolioItem = document.createElement('div');
+          
+          const portfolioLink = document.createElement('a');
+          portfolioLink.href = `/portfolio/${item.number}`;
+          portfolioLink.appendChild(portfolioItem);
+
+          const thumbnail = document.createElement('img');
+          thumbnail.textContent = item.thumbnail;
+          thumbnail.classList.add('portfolio-thumbnail');
 
           const title = document.createElement('div');
           title.textContent = item.title;
+          title.classList.add('portfolio-title');
 
           const createdAt = document.createElement('div');
           createdAt.textContent = item.created_at;
+          createdAt.classList.add('portfolio-date');
 
-          const labelsContainer = document.createElement('div');
-          labelsContainer.classList.add('labels-container');
+          portfolioItem.appendChild(thumbnail);
+          portfolioItem.appendChild(title);
+          portfolioItem.appendChild(createdAt);
 
-          item.labels.forEach(label => {
-            const labelDiv = document.createElement('div');
-            labelDiv.textContent = label.name;
-            labelDiv.style.backgroundColor = `#${label.color}`;
-            labelDiv.style.color = getTextColor(label.color);
-            labelsContainer.appendChild(labelDiv);
-          });
-
-          listItem.appendChild(title);
-          listItem.appendChild(createdAt);
-          listItem.appendChild(labelsContainer);
-
-          portfolioList.appendChild(listItem);
+          portfolioContainer.appendChild(portfolioLink);
         });
       })
       .catch(error => console.error('Error fetching data:', error));
@@ -58,8 +66,6 @@
       return brightness < 128 ? '#ffffff' : '#000000';
     }
   </script>
-
-  <script src="/include.js"></script>
 </body>
 
 </html>

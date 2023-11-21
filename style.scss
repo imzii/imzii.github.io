@@ -11,6 +11,7 @@
 
 * {
   box-sizing: border-box;
+  line-height: 1.6;
 }
 
 html,
@@ -18,6 +19,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard Variable", Pretendard, Roboto, "Noto Sans KR", "Segoe UI", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
 a {
@@ -41,29 +43,21 @@ code {
   font-family: JetBrains Mono, source-code-pro, Menlo, Monaco, Consolas, Courier New, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard Variable", Pretendard, Roboto, "Noto Sans KR", "Segoe UI", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", monospace;
 }
 
-.profile {
-  width: 10%;
-  height: auto;
-}
-
 #logo {
   font-family: 'IAMAPLAYER', sans-serif;
-  font-size: 1.7rem;
+  font-size: 2vw;
+  width: fit-content;
+  float: left;
   margin: 0;
-  min-width: 150px;
+  margin-left: 10vw;
 }
 
-.wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
+header {
   background-color: #fff;
   border-bottom: 1px solid #ddd;
 
   width: 100%;
-  height: 80px;
-  padding: 0 10%;
+  height: 5vw;
 
   position: sticky;
   
@@ -75,7 +69,9 @@ code {
   }
 
   nav {
-    font-size: 1.1rem;
+    float: right;
+    margin-right: 10vw;
+    font-size: 1vw;
   }
 
   ul {
@@ -84,17 +80,15 @@ code {
       position: relative;
       text-decoration: none;
       color: inherit;
-      
+      width: 8vw;
+
+
       float: left;
-      width: 150px;
       margin: 0 5%;
       text-align: center;
 
       a {
-        position: relative;
-        display: inline-block;
-        overflow: hidden;
-        height: fit-content;
+        width: fit-content;
       }
 
     }
@@ -105,7 +99,7 @@ code {
       bottom: 0;
       left: 50%;
       width: 0;
-      height: 2px;
+      height: 0.1vw;
       background-color: black;
       transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
     }
@@ -120,10 +114,12 @@ code {
 }
 
 main {
+
   margin: 8% 12%;
 
   h1 {
     font-size: 4vw;
+    min-width: fit-content;
   }
 
   ul {
@@ -147,6 +143,68 @@ main {
 
     li:hover:not(.selected) {
       color: darkgrey;
+    }
+  }
+
+  .profile-container {
+    width: 100%;
+    display: flex;
+  
+    .profile-image {
+      display: inline-block;
+      flex: 1;
+    
+      img {
+        width: 80%;
+        height: auto;
+        display: block;
+      }
+    }
+    
+    .profile-info {
+      flex: 3;
+    
+      h2 {
+        font-size: 2vw;
+        margin: 0;
+      }
+    
+      h3 {
+        font-size: 2vw;
+        font-weight: normal;
+        margin: 0;
+      }
+    
+      p {
+        margin: 3% 0;
+        line-height: 1.6;
+      }
+    }
+    
+    i {
+      margin-right: 2%;
+    }
+  }
+
+  .stack-container {
+    width: 100%;
+
+    img {
+      width: 10%;
+      height: auto;
+      display: inline-block;
+    }
+  }
+
+  #portfolio-container {
+    .portfolio-title {
+      font-weight: 700;
+      font-size: 1.2vw;
+    }
+    
+    .portfolio-date {
+      color: grey;
+      font-size: 1vw;
     }
   }
 }
