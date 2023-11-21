@@ -12,42 +12,39 @@ const labelsWithColors = issues.issue.labels.map(label => ({
   color: label.color
 }));
 
-const milestoneTitle = issues.issue.milestone?.title; // Check if a milestone is assigned
+const milestoneTitle = issues.issue.milestone?.title;
 
 const postData = {
   number: issueNumber,
   title: issueTitle,
   created_at: issueCreatedAt,
-  labels: labelsWithColors // 라벨 색상을 포함하여 업데이트합니다.
+  labels: labelsWithColors
 };
 
 const directoryPath = 'portfolio';
-const htmlContent = `
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${issueTitle}</title>
-</head>
-<body>
-  <h1>${issueTitle}</h1>
-  <div>${marked(issues.issue.body)}</div>
-</body>
-</html>
-`;
+const htmlFilePath = path.join(directoryPath, `${issueNumber}.html`);
+const templateFilePath = 'template.html'; // 파일 위치에 따라 경로를 수정하세요.
 
-const filePath = path.join(directoryPath, `${issueNumber}.html`);
-
-async function writeToFiles() {
+(async () => {
   try {
-    const directoryPath = 'portfolio';
     const directoryExists = await fs.access(directoryPath).then(() => true).catch(() => false);
 
     if (!directoryExists) {
       await fs.mkdir(directoryPath);
     }
-    await fs.writeFile(filePath, htmlContent);
+
+    let htmlContent = '';
+
+    if (await fs.access(htmlFilePath).catch(() => false)) {
+      htmlContent = await fs.readFile(htmlFilePath, 'utf-8');
+    } else {
+      const templateContent = await fs.readFile(templateFilePath, 'utf-8');
+      htmlContent = generateHtmlFromTemplate(templateContent, {
+        title: issueTitle,
+        body: marked(issues.issue.body)
+      });
+      await fs.writeFile(htmlFilePath, htmlContent);
+    }
 
     const jsonFilePath = milestoneTitle === 'blog' ? 'blog/blog.json' : 'portfolio/portfolio.json';
     let postDataList = [];
@@ -64,6 +61,10 @@ async function writeToFiles() {
   } catch (error) {
     console.error('Error occurred:', error);
   }
-}
+})();
 
-writeToFiles();
+function generateHtmlFromTemplate(template, data) {
+  return template.replace(/{{\s*(\w+)\s*}}/g, (match, key) => {
+    return data.hasOwnProperty(key) ? data[key] : match;
+  });
+}
