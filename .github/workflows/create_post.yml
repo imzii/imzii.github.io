@@ -1,0 +1,29 @@
+name: Create HTML and Edit JSON from GitHub Issues
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  generate-html-generated:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+
+      - name: Install dependencies
+        run: npm install marked
+
+      - name: Execute create-post script
+        run: |
+          node create-post.js
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.email "limjilab@gmail.com"
+          git config --global user.name "imzii"
+          git add .
+          git commit -m "Generate HTML from GitHub Issues - Opened"
+          git push
