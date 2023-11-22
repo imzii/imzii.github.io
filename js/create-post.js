@@ -25,8 +25,6 @@ const directoryPath = 'portfolio';
 const htmlFilePath = path.join(directoryPath, `${issueNumber}.html`);
 const templateFilePath = 'template.html'; // 파일 위치에 따라 경로를 수정하세요.
 
-// ... (나머지 코드 부분)
-
 (async () => {
   try {
     const directoryExists = await fs.access(directoryPath).then(() => true).catch(() => false);
@@ -41,24 +39,10 @@ const templateFilePath = 'template.html'; // 파일 위치에 따라 경로를 �
       htmlContent = await fs.readFile(htmlFilePath, 'utf-8');
     } else {
       const templateContent = await fs.readFile(templateFilePath, 'utf-8');
-      
-      // 변환된 HTML을 조작
-      const markedRenderer = new marked.Renderer();
-      markedRenderer.code = (code, language) => {
-        return `<pre><code class="language-${language}">${code}</code></pre>`;
-      };
-
-      const markedOptions = {
-        renderer: markedRenderer
-      };
-      
-      const bodyHTML = marked(issues.issue.body, markedOptions);
-
       htmlContent = generateHtmlFromTemplate(templateContent, {
         title: issueTitle,
-        body: bodyHTML
+        body: marked(issues.issue.body)
       });
-      
       await fs.writeFile(htmlFilePath, htmlContent);
     }
 
