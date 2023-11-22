@@ -1,13 +1,8 @@
 [
   {
-    "number": 23,
-    "title": "또만들어걍",
+    "number": 24,
+    "title": "드디어 첫번째 포스트 개시",
     "created_at": "2023.11.22",
-    "labels": [
-      {
-        "name": "duplicate",
-        "color": "cfd3d7"
-      }
-    ]
+    "labels": []
   }
 ]
