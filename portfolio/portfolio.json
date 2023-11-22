@@ -1,8 +1,13 @@
 [
   {
-    "number": 21,
-    "title": "제발요부탁드려요",
+    "number": 22,
+    "title": "제바아아알",
     "created_at": "2023.11.22",
-    "labels": []
+    "labels": [
+      {
+        "name": "Python",
+        "color": "306998"
+      }
+    ]
   }
 ]
