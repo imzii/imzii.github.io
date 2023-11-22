@@ -20,7 +20,7 @@ if (indexToModify !== -1) {
     }))
   };
 
-  fs.writeFileSync('./portfolio/portfolio.json', JSON.stringify(portfolioData, null, 2));
+  fs.writeFileSync('/portfolio/portfolio.json', JSON.stringify(portfolioData, null, 2));
   console.log(`Issue ${issueNumberToModify} updated in portfolio.json`);
 } else {
   console.log(`Issue ${issueNumberToModify} not found in portfolio.json`);
