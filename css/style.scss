@@ -43,6 +43,14 @@ code {
   font-family: JetBrains Mono, source-code-pro, Menlo, Monaco, Consolas, Courier New, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard Variable", Pretendard, Roboto, "Noto Sans KR", "Segoe UI", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", monospace;
 }
 
+#technologist {
+  width: 10vw;
+  height: 10vw;
+  position: absolute;
+  bottom: 0;
+  margin-left: 5%;
+}
+
 #logo {
   font-family: 'IAMAPLAYER', sans-serif;
   font-size: 2vw;
@@ -113,12 +121,13 @@ header {
 }
 
 main {
-
+  position: relative;
   margin: 8% 12%;
 
   h1 {
     font-size: 4vw;
     min-width: fit-content;
+    margin: 0;
   }
 
   ul {
