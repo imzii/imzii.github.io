@@ -4,7 +4,7 @@ const { marked } = require('marked');
 
 const issues = require(process.env.GITHUB_EVENT_PATH);
 
-const portfolioData = require('./portfolio/portfolio.json');
+const portfolioData = require('/portfolio/portfolio.json');
 const issueNumberToModify = issues.issue.number;
 
 const indexToModify = portfolioData.findIndex(item => item.number === issueNumberToModify);
