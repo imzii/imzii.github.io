@@ -6,7 +6,7 @@ function removeElementsByKeyValue(arr, key, value) {
   return arr.filter(item => item[key] !== value);
 }
 
-const portfolioData = require('./portfolio/portfolio.json');
+const portfolioData = require('/portfolio/portfolio.json');
 const issueNumberToDelete = issues.issue.number;
 const indexToDelete = portfolioData.findIndex(item => item.number === issueNumberToDelete);
 
