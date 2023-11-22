@@ -1,21 +1,8 @@
 [
   {
-    "number": 18,
-    "title": "새 이슈",
+    "number": 19,
+    "title": "어 이렇게 하면?",
     "created_at": "2023.11.22",
-    "labels": [
-      {
-        "name": "bug",
-        "color": "d73a4a"
-      },
-      {
-        "name": "duplicate",
-        "color": "cfd3d7"
-      },
-      {
-        "name": "help wanted",
-        "color": "008672"
-      }
-    ]
+    "labels": []
   }
 ]
