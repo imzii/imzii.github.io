@@ -1,46 +1,12 @@
-@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&display=swap");
-@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css");
-@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/variable/pretendardvariable.css");
-@font-face {
-  font-family: "IAMAPLAYER";
-  font-style: normal;
-  font-weight: 400;
-  src: url(https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/IAMAPLAYER.woff2) format("woff2");
+button {
+  background-color: white;
+  padding: 1%;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
 }
-* {
-  box-sizing: border-box;
-  line-height: 1.6;
-}
-
-html,
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard Variable", Pretendard, Roboto, "Noto Sans KR", "Segoe UI", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-ul {
-  display: inline-block;
-  margin: 0;
-  padding: 0;
-}
-ul li {
-  margin: 0;
-  list-style-type: none;
-  float: left;
-}
-
-code {
-  font-family: JetBrains Mono, source-code-pro, Menlo, Monaco, Consolas, Courier New, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard Variable", Pretendard, Roboto, "Noto Sans KR", "Segoe UI", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", monospace;
+button:hover {
   background-color: rgb(240, 240, 240);
-  border-radius: 5px;
-  padding: 0.3% 1%;
 }
 
 .emoji {
@@ -51,74 +17,23 @@ code {
   margin-left: 5%;
 }
 
-#logo {
-  font-family: "IAMAPLAYER", sans-serif;
-  font-size: 2vw;
-  width: fit-content;
-  float: left;
-  margin: 0;
-  margin-left: 10vw;
-}
-
-header {
-  background-color: #fff;
-  border-bottom: 1px solid #ddd;
-  width: 100%;
-  height: 5vw;
-  position: sticky;
-}
-header * {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-}
-header nav {
-  float: right;
-  margin-right: 10vw;
-  font-size: 1vw;
-}
-header ul li {
-  position: relative;
-  text-decoration: none;
-  color: inherit;
-  width: 8vw;
-  float: left;
-  margin: 0 5%;
-  text-align: center;
-}
-header ul li a {
-  width: fit-content;
-}
-header ul li::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  width: 0;
-  height: 0.1vw;
-  background-color: black;
-  transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
-}
-header ul li:hover::after {
-  width: 100%;
-  left: 0;
-  transform-origin: right;
-}
-
 main {
-  position: relative;
-  margin: 8% 25%;
+  margin: 15% 25%;
 }
 main > h1 {
   font-size: 3vw;
   margin: 2vw 0;
 }
-main h1 p {
+main > h1 div p {
   color: grey;
   font-size: 1vw;
   font-weight: normal;
   margin: 0;
+  float: left;
+}
+main > h1 div span.icon-share {
+  float: right;
+  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
 }
 main article {
   font-size: 1vw;
@@ -139,7 +54,15 @@ main article h1 a {
   align-items: center;
   font-size: 1vw;
 }
-main article p a{
+main h1 button {
+  float: right;
+}
+main article h1 a span.icon-link {
+  font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 24;
+}
+main article p a {
   text-decoration: underline;
   color: -webkit-link;
 }
+
+/*# sourceMappingURL=template.css.map */
