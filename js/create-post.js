@@ -59,7 +59,7 @@ const templateFilePath = 'template.html'; // 파일 위치에 따라 경로를 �
       await fs.writeFile(htmlFilePath, htmlContent);
     }
 
-    const jsonFilePath = milestoneTitle === 'blog' ? 'blog/blog.json' : 'portfolio/portfolio.json';
+    const jsonFilePath = milestoneTitle === 'blog' ? '/blog/blog.json' : '/portfolio/portfolio.json';
     let postDataList = [];
 
     if (await fs.access(jsonFilePath).catch(() => false)) {
