@@ -43,7 +43,7 @@ const templateFilePath = 'template.html'; // 파일 위치에 따라 경로를 �
       return `
         <h${level} id="${escapedText}">
           ${text}
-          <a href="#${escapedText}" class="anchor"><i class="fa-solid fa-link"></i></a>
+          <a href="#${escapedText}" class="anchor"><span class="material-symbols-outlined"></span></a>
         </h${level}>`;
     };
     
