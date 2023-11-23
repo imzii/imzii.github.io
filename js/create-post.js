@@ -54,7 +54,7 @@ const templateFilePath = 'template.html'; // 파일 위치에 따라 경로를 �
       htmlContent = generateHtmlFromTemplate(templateContent, {
         title: issueTitle,
         created_at: issueCreatedAt,
-        body: marked(issues.issue.body, { breaks: true }, { renderer: renderer })
+        body: marked(issues.issue.body, { breaks: true, renderer: renderer })
       });
       await fs.writeFile(htmlFilePath, htmlContent);
     }
