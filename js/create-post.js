@@ -35,6 +35,18 @@ const templateFilePath = 'template.html'; // 파일 위치에 따라 경로를 �
 
     let htmlContent = '';
 
+    const renderer = new marked.Renderer();
+    
+    renderer.heading = function (text, level) {
+      const escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
+    
+      return `
+        <h${level} id="${escapedText}">
+          ${text}
+          <a href="#${escapedText}" class="anchor"><i class="fa-solid fa-link"></i></a>
+        </h${level}>`;
+    };
+    
     if (await fs.access(htmlFilePath).catch(() => false)) {
       htmlContent = await fs.readFile(htmlFilePath, 'utf-8');
     } else {
@@ -42,7 +54,7 @@ const templateFilePath = 'template.html'; // 파일 위치에 따라 경로를 �
       htmlContent = generateHtmlFromTemplate(templateContent, {
         title: issueTitle,
         created_at: issueCreatedAt,
-        body: marked(issues.issue.body, { breaks: true })
+        body: marked(issues.issue.body, { breaks: true }, { renderer: renderer })
       });
       await fs.writeFile(htmlFilePath, htmlContent);
     }
