@@ -4,8 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/header.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/footer.css">
 
+  <script src="https://kit.fontawesome.com/4921dce485.js" crossorigin="anonymous"></script>
   <title>Developer Lim</title>
 </head>
 
@@ -24,6 +28,15 @@
     <h1>포트폴리오</h1>
     <div id="portfolio-container"></div>
   </main>
+  <footer>
+    <div>
+      Copyright ©imzii All rights reserved.<br />
+      2023 | Developed by imzii
+    </div>
+    <a href="https://github.com/imzii" target="_blank">
+      <i class="fa fa-github"></i>
+    </a>
+  </footer>
   <script>
     fetch('portfolio.json')
       .then(response => response.json())
