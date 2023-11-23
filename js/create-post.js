@@ -41,6 +41,7 @@ const templateFilePath = 'template.html'; // 파일 위치에 따라 경로를 �
       const templateContent = await fs.readFile(templateFilePath, 'utf-8');
       htmlContent = generateHtmlFromTemplate(templateContent, {
         title: issueTitle,
+        created_at: issueCreatedAt,
         body: marked(issues.issue.body, { breaks: true })
       });
       await fs.writeFile(htmlFilePath, htmlContent);
