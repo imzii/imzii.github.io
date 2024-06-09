@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://imzii.github.io/sitemap.xml
